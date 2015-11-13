@@ -1,0 +1,9 @@
+import UIKit
+
+class MDMainColor {
+<% main_colors.each do |name, hex| %>
+  class func <%= camelize_name(name) %>Color() -> UIColor {
+      return <%= hex_to_uicolor(hex) %>
+  }
+<% end %>
+}

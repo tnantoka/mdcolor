@@ -1,0 +1,12 @@
+import UIKit
+
+class MDColor {
+<% groups.each do |name, colors| %>
+    // MARK: - <%= name %>
+  <% colors.each do |shade, hex| %>
+    class func <%= camelize_name(name) %><%= shade %>Color() -> UIColor {
+        return <%= hex_to_uicolor(hex) %>
+    }
+  <% end %>
+<% end %>
+}
