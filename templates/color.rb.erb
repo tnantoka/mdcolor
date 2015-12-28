@@ -1,0 +1,13 @@
+class Color < ActiveHash::Base
+  self.data = [ 
+<% i = 1 -%>
+<% groups.each do |name, colors| -%>
+  <%- colors.each do |shade, hex| -%>
+    <%- next if [300, 500].exclude?(shade.to_i) -%>
+    { id: <%= i %>, name: '<%= name %><%= shade %>', hex: '#<%= hex %>' },  
+    <%- i += 1 -%>
+  <%- end -%>
+<% end -%>
+  ]
+end
+

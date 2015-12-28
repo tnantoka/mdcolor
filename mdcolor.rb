@@ -56,7 +56,7 @@ end
 FileUtils.mkdir_p('build')
 
 Dir::glob('templates/*.erb').each do |template|
-  erb = ERB.new(File.read(template))
+  erb = ERB.new(File.read(template), nil, '-')
   result = erb.result
   filename = File.basename(template, '.erb')
   File.write("build/#{filename}", result)
