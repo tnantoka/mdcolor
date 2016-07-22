@@ -10,6 +10,8 @@ require 'active_support/core_ext'
 URL = 'https://www.google.com/design/spec/style/color.html'
 HTML_FILE = 'tmp/color.html'
 
+FileUtils.mkdir_p('tmp')
+
 if File.exists?(HTML_FILE)
   html = File.read(HTML_FILE)
 else
@@ -27,7 +29,7 @@ doc.css('.color-group').each do |group|
 
   name = main_color.at('.name').text
 
-  main_colors[name] = main_color.at('.hex').text
+  main_colors[name] = main_color.at('.hex').text[1..-1]
 
   colors = {}
 
